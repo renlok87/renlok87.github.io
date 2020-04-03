@@ -1,0 +1,14 @@
+{
+  "version": 2, // using version 2.0 of now.sh
+  "name": "Your Gatsby App Name",
+  "alias": "renlok87.now.sh.com", // remove it if you don't own a domain with now.sh
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@now/static-build",
+      "config": {
+        "distDir": "public" // default folder for Gatsby builds
+      }
+    }
+  ]
+}

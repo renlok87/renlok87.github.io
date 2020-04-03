@@ -1,0 +1,146 @@
+.summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 270px;
+  height: 542px;
+  width: 272px;
+  min-height: 150px;
+  padding: 0 18px 16px 18px;
+  border: 1px solid transparent;
+  &__body {
+    display: flex;
+    align-content: flex-start;
+    flex-direction: column;
+    text-align: left;
+  }
+  &__icon {
+    display: flex;
+    align-self: flex-start;
+    margin-bottom: 12px;
+  }
+  &__title {
+    font-style: normal;
+    font-weight: 900;
+    font-size: 22px;
+    line-height: 26px;
+    text-transform: uppercase;
+
+    color: #FFFFFF;
+  }
+  &__text {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.02em;
+    color: #D0E7FF;
+    width: 90%;
+    margin-bottom: 22px;
+    strong {
+      color: #fff;
+      font-weight: 700;
+    }
+  }
+  &__group {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    color: #D0E7FF;
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+    width: 48%;
+    text-align: left;
+    strong {
+      font-size: 18px;
+      line-height: 20px;
+      color: #fff;
+      font-weight: 700;
+    }
+  }
+  &_blue {
+    background: #0F4C81;
+  }
+  &_red {
+    background: #E47665;
+    .summary {
+      &__body {
+        margin-top: 30px;
+      }
+      &__title {
+        color: #fff;
+        margin-bottom: 8px;
+      }
+      &__text {
+        color: #fff;
+        font-size: 15px;
+        margin-bottom: 24px;
+        strong {
+          font-style: normal;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 18px;
+          color: #fff;
+
+        }
+      }
+    }
+  }
+  &_grey {
+    background: #E4E7ED;
+    .summary {
+      &__body {
+        margin-top: 30px;
+      }
+      &__title {
+        color: #2B2B2B;
+        margin-bottom: 24px;
+      }
+      &__text {
+        color: #2B2B2B;
+        margin-bottom: 24px;
+        strong {
+          font-style: normal;
+          font-weight: 500;
+          font-size: 18px;
+          line-height: 24px;
+          color: #434955;
+
+        }
+      }
+    }
+  }
+  &_cream {
+    background: #F3F2F1;
+    .summary {
+      &__body {
+        margin-top: 30px;
+      }
+      &__title {
+        color: #2B2B2B
+      }
+      &__text {
+        color: #2B2B2B;
+        margin-bottom: 20px;
+        strong {
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
+.paperItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  &__icons {
+    margin-bottom: 4px;
+  }
+  &__icon {
+    margin-right: 4px;
+  }
+  &__text {
+    margin-bottom: 12px;
+  }
+}
