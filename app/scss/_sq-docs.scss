@@ -1,0 +1,37 @@
+.sq-docs {
+  padding-top: 40px;
+  .serts {
+    margin-bottom: 40px;
+  }
+  h3 {
+    margin-bottom: 16px;
+  }
+  .text {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 24px;
+    color: #6B7676;
+    margin-bottom: 40px;
+  }
+  @media only screen and (max-width: 768px) {
+    padding-top: 40px;
+    padding-left: 12px;
+    padding-right: 12px;
+    .serts {
+      display: flex;
+      justify-content: center;
+      img {
+        width: 150px;
+        height: 213px;
+      }
+
+    }
+  }
+}
+.serts {
+  img {
+    max-width: 306px;
+    height: 435px;
+  }
+}
