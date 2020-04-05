@@ -1,47 +1,72 @@
-# Foundation for Sites Template
+<h1>OptimizedHTML 5</h1>
+<p>Lightweight startup HTML5 template, based on Gulp.</p>
 
-**Please open all issues with this template on the main [Foundation for Sites](https://github.com/zurb/foundation-sites/issues) repo.**
+<p>
+	<img src="https://raw.githubusercontent.com/agragregra/oh5/master/app/images/src/preview.jpg" alt="Start HTML Template">
+</p>
 
-This is the basic starter project for [Foundation for Sites 6](http://foundation.zurb.com/sites). It includes a Sass compiler and a starter HTML file for you.
+<p><strong>OptimizedHTML 5</strong> - lightweight startup HTML5 template with <strong>Gulp 4</strong>, <strong>Sass/Scss/Less/Stylus</strong>, <strong>Browsersync</strong>, <strong>Autoprefixer</strong>, <strong>Uglify-ES</strong>, <strong>Clean-CSS</strong>, <strong>Rsync</strong>, <strong>CSS Reboot</strong> (Bootstrap reboot). It uses best practices for <strong>responsive images</strong> optimizing and contains a <strong>.htaccess</strong> file for resources caching (images, fonts, HTML, CSS, JS and other content types).</p>
 
-## Installation
+<h2>How to use OptimizedHTML 5</h2>
 
-To use this template, your computer needs:
+<pre>git clone https://github.com/agragregra/oh5</pre>
 
-- [NodeJS](https://nodejs.org/en/) (0.12 or greater)
-- [Git](https://git-scm.com/)
+<ol>
+	<li>Clone or <a href="https://github.com/agragregra/OptimizedHTML-5/archive/master.zip">Download</a> <strong>OptimizedHTML 5</strong> from GitHub</li>
+	<li>Install Node Modules: <strong>npm i</strong></li>
+	<li>Run: <strong>gulp</strong></li>
+</ol>
 
-This template can be installed with the Foundation CLI, or downloaded and set up manually.
+<h2>Main Gulp tasks:</h2>
 
-### Using the CLI
+<ul>
+	<li><strong title="gulp task"><em>gulp</em></strong>: run default gulp task (images, styles, scripts, browsersync, startwatch)</li>
+	<li><strong title="cleanimg task"><em>cleanimg</em></strong>: Clean all compressed images</li>
+	<li><strong title="styles, scripts, images, assets tasks"><em>styles, scripts, images, assets</em></strong>: build assets (css, js, images or all)</li>
+	<li><strong title="rsync task"><em>rsync</em></strong>: project deployment via <strong>RSYNC</strong></li>
+</ul>
 
-Install the Foundation CLI with this command:
+<h2>Basic rules</h2>
 
-```bash
-npm install foundation-cli --global
-```
+<ol>
+	<li>All custom <strong title="scripts task"><em>scripts</em></strong> located in <strong>app/js/app.js</strong></li>
+	<li>All custom <strong title="styles task"><em>styles</em></strong> located in <strong>app/{preprocessor}/main.sass|scss|less|styl</strong></li>
+	<li>All preprocessor <strong>configs</strong> placed in <strong>app/{preprocessor}/_config.sass|scss|less|styl</strong></li>
+	<li>You can <strong>delete folders</strong> of other preprocessors before work.</li>
+	<li>All <strong>images</strong> sources placed in <strong>app/images/src/</strong> folder.</li>
+</ol>
 
-Use this command to set up a blank Foundation for Sites project with this template:
+<h2>Included features</h2>
 
-```bash
-foundation new --framework sites --template basic
-```
+<ol>
+	<li><a href="https://getbootstrap.com/docs/4.0/content/reboot/">bootstrap-reboot</a> - Bootstrap Reboot CSS collection</li>
+	<li>
+		<a href="https://getbootstrap.com/docs/4.0/layout/overview/#responsive-breakpoints">_breakpoints.scss</a> - Bootstrap Breakpoints mixin (available only for sass and scss)</li>
+		<li><a href="https://getbootstrap.com/docs/4.0/layout/grid/">bootstrap-grid</a> (optional) - Bootstrap Grid collection</li>
+</ol>
 
-The CLI will prompt you to give your project a name. The template will be downloaded into a folder with this name.
+<h2>Caching</h2>
 
-### Manual Setup
+<p>Rename <strong>ht.access</strong> to <strong>.htaccess</strong> before place it in your web server. This file contain rules for htaccess resources caching.</p>
 
-To manually set up the template, first download it with Git:
+<h2>Helpers</h2>
 
-```bash
-git clone https://github.com/zurb/foundation-sites-template projectname
-```
+<h3>font-weight helper</h3>
 
-Then open the folder in your command line, and install the needed dependencies:
+<ul>
+	<li><strong>100</strong> - Extra Light or Ultra Light</li>
+	<li><strong>200</strong> - Light or Thin</li>
+	<li><strong>300</strong> - Book or Demi</li>
+	<li><strong>400</strong> - Regular or Normal</li>
+	<li><strong>500</strong> - Medium</li>
+	<li><strong>600</strong> - Semibold or Demibold</li>
+	<li><strong>700</strong> - Bold</li>
+	<li><strong>800</strong> - Black or Extra Bold or Heavy</li>
+	<li><strong>900</strong> - Extra Black or Fat or Ultra Blac</li>
+</ul>
 
-```bash
-cd projectname
-npm install
-```
+<h2>Issues</h2>
 
-Finally, run `npm start` to run the Sass compiler. It will re-run every time you save a Sass file.
+<ol>
+	<li>Long Preprocessor compile: Disable the "safe write" option in PHPStorm settings.</li>
+</ol>

@@ -1,36 +1,127 @@
-var gulp          = require('gulp');
-var browserSync   = require('browser-sync').create();
-var $             = require('gulp-load-plugins')();
-var autoprefixer  = require('autoprefixer');
+// VARIABLES & PATHS
 
-var sassPaths = [
-  'node_modules/foundation-sites/scss',
-  'node_modules/motion-ui/src'
-];
+let preprocessor = 'scss', // Preprocessor (sass, scss, less, styl)
+    fileswatch   = 'html,htm,txt,json,md,woff2', // List of files extensions for watching & hard reload (comma separated)
+    imageswatch  = 'jpg,jpeg,png,webp,svg', // List of images extensions for watching & compression (comma separated)
+    baseDir      = 'app', // Base directory path without «/» at the end
+    online       = true; // If «false» - Browsersync will work offline without internet connection
 
-function sass() {
-  return gulp.src('scss/app.scss')
-    .pipe($.sass({
-      includePaths: sassPaths,
-      outputStyle: 'compressed' // if css compressed **file size**
-    })
-      .on('error', $.sass.logError))
-    .pipe($.postcss([
-      autoprefixer({ browsers: ['last 2 versions', 'ie >= 9'] })
-    ]))
-    .pipe(gulp.dest('css'))
-    .pipe(browserSync.stream());
-};
+let paths = {
 
-function serve() {
-  browserSync.init({
-    server: "./"
-  });
+	scripts: {
+		src: [
+			'node_modules/jquery/dist/jquery.min.js', // npm vendor example (npm i --save-dev jquery)
+			'node_modules/desoslide/dist/js/jquery.desoslide.min.js', // npm vendor example (npm i --save-dev jquery)
+			'node_modules/lightslider/dist/js/lightslider.js', //
+			'node_modules/lightgallery/dist/js/lightgallery.js', //
+			baseDir + '/js/app.js' // app.js. Always at the end
+		],
+		dest: baseDir + '/js',
+	},
 
-  gulp.watch("scss/*.scss", sass);
-  gulp.watch("*.html").on('change', browserSync.reload);
+	styles: {
+		src:  baseDir + '/' + preprocessor + '/main.*',
+		dest: baseDir + '/css',
+	},
+
+	images: {
+		src:  baseDir + '/images/src/**/*',
+		dest: baseDir + '/images/dest',
+	},
+
+	deploy: {
+		hostname:    'username@yousite.com', // Deploy hostname
+		destination: 'yousite/public_html/', // Deploy destination
+		include:     [/* '*.htaccess' */], // Included files to deploy
+		exclude:     [ '**/Thumbs.db', '**/*.DS_Store' ], // Excluded files from deploy
+	},
+
+	cssOutputName: 'app.min.css',
+	jsOutputName:  'app.min.js',
+
 }
 
-gulp.task('sass', sass);
-gulp.task('serve', gulp.series('sass', serve));
-gulp.task('default', gulp.series('sass', serve));
+// LOGIC
+
+const { src, dest, parallel, series, watch } = require('gulp');
+const sass         = require('gulp-sass');
+const scss         = require('gulp-sass');
+const less         = require('gulp-less');
+const styl         = require('gulp-stylus');
+const cleancss     = require('gulp-clean-css');
+const concat       = require('gulp-concat');
+const browserSync  = require('browser-sync').create();
+const uglify       = require('gulp-uglify-es').default;
+const autoprefixer = require('gulp-autoprefixer');
+const imagemin     = require('gulp-imagemin');
+const newer        = require('gulp-newer');
+const rsync        = require('gulp-rsync');
+const del          = require('del');
+
+function browsersync() {
+	browserSync.init({
+		server: { baseDir: baseDir + '/' },
+		notify: false,
+		online: online
+	})
+}
+
+function scripts() {
+	return src(paths.scripts.src)
+	.pipe(concat(paths.jsOutputName))
+	.pipe(uglify())
+	.pipe(dest(paths.scripts.dest))
+	.pipe(browserSync.stream())
+}
+
+function styles() {
+	return src(paths.styles.src)
+	.pipe(eval(preprocessor)())
+	.pipe(concat(paths.cssOutputName))
+	.pipe(autoprefixer({ overrideBrowserslist: ['last 10 versions'], grid: true }))
+	.pipe(cleancss( {level: { 1: { specialComments: 0 } } }))
+	.pipe(dest(paths.styles.dest))
+	.pipe(browserSync.stream())
+}
+
+function images() {
+	return src(paths.images.src)
+	.pipe(newer(paths.images.dest))
+	.pipe(imagemin())
+	.pipe(dest(paths.images.dest))
+}
+
+function cleanimg() {
+	return del('' + paths.images.dest + '/**/*', { force: true })
+}
+
+function deploy() {
+	return src(baseDir + '/')
+	.pipe(rsync({
+		root: baseDir + '/',
+		hostname: paths.deploy.hostname,
+		destination: paths.deploy.destination,
+		include: paths.deploy.include,
+		exclude: paths.deploy.exclude,
+		recursive: true,
+		archive: true,
+		silent: false,
+		compress: true
+	}))
+}
+
+function startwatch() {
+	watch(baseDir  + '/**/' + preprocessor + '/**/*', styles);
+	watch(baseDir  + '/**/*.{' + imageswatch + '}', images);
+	watch(baseDir  + '/**/*.{' + fileswatch + '}').on('change', browserSync.reload);
+	watch([baseDir + '/**/*.js', '!' + paths.scripts.dest + '/*.min.js'], scripts);
+}
+
+exports.browsersync = browsersync;
+exports.assets      = series(cleanimg, styles, scripts, images);
+exports.styles      = styles;
+exports.scripts     = scripts;
+exports.images      = images;
+exports.cleanimg    = cleanimg;
+exports.deploy      = deploy;
+exports.default     = parallel(images, styles, scripts, browsersync, startwatch);

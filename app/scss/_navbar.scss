@@ -1,0 +1,89 @@
+@import 'config';
+#navbar {
+  display: flex;
+  height: 60px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  overflow: hidden;
+  background-color: #fff;
+  @media only screen and (max-width: 600px) {
+    height: 80px;
+    padding: 0 10px;
+    .navbar {
+      &__LB {
+        padding-left: 16px;
+      }
+      &__RB {
+        margin-right: 16px;
+      }
+    }
+  }
+  .container-navbar {
+    background-color: #fff;
+    margin: 0 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 5px;
+    @media only screen and (max-width: 600px) {
+      margin: 0 12px;
+    }
+  }
+  .navbar {
+    background-color: #fff;
+    &__LB {
+      display: flex;
+      height: 60px;
+      align-items: center;
+      flex-direction: row;
+      justify-content: flex-start;
+      .logo {
+        width: 126px;
+        margin-right: 80px;
+      }
+    }
+  }
+
+}
+
+.content {
+  padding: 16px;
+}
+
+.sticky {
+  background-color: #fff;
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 60px;
+  @media only screen and (max-width: 600px) {
+    padding-top: 80px;
+  }
+}
+.navbar-menu {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  a {
+    font-family: $roboto;
+    margin-right: 60px;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+    color: #000000;
+    &:hover, &:active, &:focus {
+      text-decoration: none;
+      color: #757575;
+      transition: color 0.5s ease;
+    }
+  }
+}
