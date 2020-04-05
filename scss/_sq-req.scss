@@ -1,0 +1,46 @@
+.sq-req {
+  padding: 40px 0;
+  @media only screen and (max-width: 768px) {
+    padding: 40px 12px;
+    .sendForm {
+      width: 100%;
+      input[type=text], select {
+        margin-top: 8px;
+      }
+      input[type=submit] {
+        margin-top: 8px;
+      }
+    }
+
+  }
+}
+.sendForm {
+  width: 495px;
+  input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin-top: 4px;
+    display: inline-block;
+    border: 1px solid #E9F0F8;
+    box-sizing: border-box;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+    color: #ccc;
+  }
+
+  input[type=submit] {
+    width: 100%;
+    background-color: #00B5C1;
+    color: white;
+    padding: 14px 20px;
+    margin-top: 4px;
+    border: none;
+    cursor: pointer;
+  }
+
+  input[type=submit]:hover {
+    background-color: #00B5C1;
+  }
+}
+

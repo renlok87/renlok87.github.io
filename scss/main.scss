@@ -1,0 +1,214 @@
+@import 'config';
+@import 'navbar';
+@import 'sq-ivl';
+@import 'sq-coro';
+@import 'sq-rate';
+@import 'sq-char';
+@import 'sq-completion';
+@import 'sq-docs';
+@import 'sq-req';
+@import 'sq-footer';
+@import 'productCard';
+
+.container-navbar {
+  width: 1110px;
+  margin: 0 auto;
+}
+.horiz {
+  display: none;
+  .horizPicture {
+    padding-bottom: 20px;
+    padding-right: 0;
+  }
+}
+@media only screen and (max-width: 968px) {
+  .vertical {
+    display: none;
+  }
+  .horiz {
+    display: flex;
+  }
+}
+
+.button {
+  font-family: $roboto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #FFFFFF;
+  cursor: pointer;
+  &_navbar {
+    width: 180px;
+    height: 40px;
+    background: #508FCE;
+    &:hover, &:focus {
+      background: #4e6aa7;
+      transition: background 0.25s ease-in;
+    }
+  }
+  &_card {
+    width: 160px;
+    height: 48px;
+    background: #00B5C1;
+    &:hover, &:focus {
+      background: #0098A4;
+      transition: background 0.25s ease-in;
+    }
+    @media only screen and (max-width: 968px) {
+      width: 100%;
+      height: 48px;
+    }
+  }
+  &_buy {
+    width: 260px;
+    height: 60px;
+    background: #00B5C1;
+    &:hover, &:focus {
+      background: #0098A4;
+      transition: background 0.25s ease-in;
+    }
+    @media only screen and (max-width: 968px) {
+      width: 180px;
+      height: 60px;
+    }
+  }
+  &_submit {
+    width: 100%;
+    height: 60px;
+    background: #00B5C1;
+    &:hover, &:focus {
+      background: #0098A4;
+      transition: background 0.25s ease-in;
+    }
+    @media only screen and (max-width: 968px) {
+      width: 100%;
+      height: 60px;
+    }
+  }
+
+}
+.text {
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
+  color: #6B7676;
+}
+
+h1 {
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 40px;
+  line-height: 47px;
+  color: #2F2F2F;
+  @media only screen and (max-width: 768px) {
+    font-size: 24px;
+    line-height: 28px;
+  }
+}
+h2 {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 50px;
+  color: #2F2F2F;
+  @media only screen and (max-width: 768px) {
+    font-size: 24px;
+    line-height: 28px;
+  }
+}
+h3 {
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+
+  color: #2F2F2F;
+  @media only screen and (max-width: 768px) {
+    font-size: 24px;
+    line-height: 28px;
+  }
+}
+.sq {
+  &_grey {
+    background: #F7FBFF;
+  }
+  &_header {
+    margin-top: 60px;
+    min-height: 620px;
+    background: #F7FBFF;
+    display: flex;
+    align-items: center;
+    @media only screen and (max-width: 768px) {
+      padding-top: 44px;
+      padding-bottom: 44px;
+      padding-left: 12px;
+      padding-right: 12px;
+      flex-direction: column;
+      align-items: center;
+    }
+    .title {
+      width: 90%;
+      margin-bottom: 24px;
+      max-width: 480px;
+      @media only screen and (max-width: 768px) {
+        margin-bottom: 20px;
+      }
+    }
+    .text {
+      margin-bottom: 53px;
+    }
+    .costWrap {
+      max-width: 456px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+  h1, h2, h3 {
+    @media only screen and (max-width: 768px) {
+      margin-bottom: 16px;
+    }
+  }
+  .header_LB {
+    max-width: 496px;
+
+  }
+}
+
+.cost {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  color: #2F2F2F;
+  &_card {
+    font-size: 24px;
+    line-height: 28px;
+    @media only screen and (max-width: 968px) {
+      font-weight: 500;
+      font-size: 24px;
+    }
+  }
+  &_header {
+    font-size: 36px;
+    font-weight: 700;
+    @media only screen and (max-width: 968px) {
+      font-weight: 500;
+      font-size: 24px;
+    }
+  }
+}
+.carouselProduct {
+  display: none;
+  @media only screen and (max-width: 968px) {
+    display: block;
+    margin-bottom: 40px;
+  }
+}
