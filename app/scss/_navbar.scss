@@ -1,4 +1,11 @@
 @import 'config';
+
+@media only screen and (max-width: 600px) {
+  #navbar .navbar__LB .logo {
+    margin-right: 50px !important;
+  }
+}
+
 #navbar {
   display: flex;
   height: 60px;

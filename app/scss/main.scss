@@ -29,7 +29,6 @@
     display: flex;
   }
 }
-
 .button {
   font-family: $roboto;
   display: flex;
@@ -47,8 +46,75 @@
     height: 40px;
     background: #508FCE;
     &:hover, &:focus {
+      text-decoration: none;
       background: #4e6aa7;
       transition: background 0.25s ease-in;
+
+    }
+  }
+  &_card {
+    width: 160px;
+    height: 48px;
+    background: #00B5C1;
+    &:hover, &:focus {
+      background: #0098A4;
+      transition: background 0.25s ease-in;
+    }
+    @media only screen and (max-width: 968px) {
+      width: 100%;
+      height: 48px;
+    }
+  }
+  &_buy {
+    width: 260px;
+    height: 60px;
+    background: #00B5C1;
+    &:hover, &:focus {
+      background: #0098A4;
+      transition: background 0.25s ease-in;
+    }
+    @media only screen and (max-width: 968px) {
+      width: 180px;
+      height: 60px;
+    }
+  }
+  &_submit {
+    width: 100%;
+    height: 60px;
+    background: #00B5C1;
+    &:hover, &:focus {
+      background: #0098A4;
+      transition: background 0.25s ease-in;
+    }
+    @media only screen and (max-width: 968px) {
+      width: 100%;
+      height: 60px;
+    }
+  }
+
+}
+a.button {
+  font-family: $roboto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #FFFFFF;
+  cursor: pointer;
+  text-decoration: none;
+  &_navbar {
+    width: 180px;
+    height: 40px;
+    background: #508FCE;
+    &:hover, &:focus {
+        text-decoration: none;
+        background: #4e6aa7;
+        transition: background 0.25s ease-in;
+
     }
   }
   &_card {
